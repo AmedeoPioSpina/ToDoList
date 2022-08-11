@@ -58,6 +58,9 @@ body{
                     background-color: rgb(194, 0, 0);
                     width: 2.5rem;
                     height: 2.5rem;
+                    &:hover{
+                        background-color: red;
+                    }
                 }
             }
         }

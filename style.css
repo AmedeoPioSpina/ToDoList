@@ -58,4 +58,7 @@ body .toDoListInterface .toDoList .toDo .deleteBtn {
   background-color: rgb(194, 0, 0);
   width: 2.5rem;
   height: 2.5rem;
+}
+body .toDoListInterface .toDoList .toDo .deleteBtn:hover {
+  background-color: red;
 }/*# sourceMappingURL=style.css.map */
