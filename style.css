@@ -40,6 +40,7 @@ body .toDoListInterface form .addBtn:hover {
 body .toDoListInterface .toDoList .toDo {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border: 2px solid gray;
   border-radius: 5px;
   background-color: rgb(253, 199, 199);
@@ -49,10 +50,17 @@ body .toDoListInterface .toDoList .toDo {
 body .toDoListInterface .toDoList .toDo p {
   display: flex;
   align-items: center;
+  font-family: "Indie Flower", cursive;
+  font-weight: bolder;
   font-size: 1.5rem;
+  overflow-wrap: break-word;
+  max-width: 24.5rem;
   margin: 0;
 }
 body .toDoListInterface .toDoList .toDo .deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   border-radius: 5px;
   background-color: rgb(194, 0, 0);
@@ -61,4 +69,7 @@ body .toDoListInterface .toDoList .toDo .deleteBtn {
 }
 body .toDoListInterface .toDoList .toDo .deleteBtn:hover {
   background-color: red;
+}
+body .toDoListInterface .toDoList .toDo .deleteBtn img {
+  width: 2rem;
 }/*# sourceMappingURL=style.css.map */
