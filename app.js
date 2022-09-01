@@ -1,12 +1,18 @@
-const toDoList = document.querySelector(".toDoList");
-const addBtn = document.querySelector(".addBtn");
-let deleteBtns = document.querySelectorAll(".deleteBtn");
+const loadLocalSave = () =>{
+    const save1 = localStorage.getItem("save1");
+    toDoList.innerHTML = save1;
+}
 
-const initToDo = () => {
+const setLocalSave = () =>{
+    const htmlToDoList = toDoList.innerHTML;
+    localStorage.setItem("save1", htmlToDoList);
+}
+
+const createToDoElement = (text) => {
     const toDo = document.createElement("div");
     toDo.classList.add("toDo");
     const p = document.createElement("p");
-    p.textContent = document.querySelector("input").value;
+    p.textContent = text;
     document.querySelector("input").value = "";
     toDo.appendChild(p);
     const deleteBtn = document.createElement("button");
@@ -16,21 +22,52 @@ const initToDo = () => {
     deleteBtn.appendChild(deleteImgBtn);
     toDo.appendChild(deleteBtn);
     toDoList.appendChild(toDo);
+    setLocalSave();
 }
 
-const removeToDo = (element) => {
+const addToDoElement = () => {
+    const pText = document.querySelector("input").value;
+    createToDoElement(pText);
+}
+
+const removeToDoElement = (element) => {
     element.remove();
+    setLocalSave();
 }
 
-addBtn.onclick = (e) => {
-    e.preventDefault();
-    if(document.querySelector("input").value.replaceAll(" ", "").length === 0) return null;
-    initToDo();
+const deleteBtnProp = () => {
     deleteBtns = document.querySelectorAll(".deleteBtn");
     deleteBtns.forEach( btn => {
         btn.onclick = () => {
             const fatherTarget = btn.closest(".toDo");
-            removeToDo(fatherTarget);
+            removeToDoElement(fatherTarget);
         };
     });
+}
+
+const strikeToDoElement = () => {
+    const allP = document.querySelectorAll("p");
+    allP.forEach( element => {
+        element.addEventListener("click", (e) => {
+            let text = element.innerText;
+            element.innerHTML = text.strike();
+        });
+    });
+}
+
+
+const toDoList = document.querySelector(".toDoList");
+const addBtn = document.querySelector(".addBtn");
+let deleteBtns = document.querySelectorAll(".deleteBtn");
+
+loadLocalSave();
+deleteBtnProp();
+
+
+addBtn.onclick = (e) => {
+    e.preventDefault();
+    if(document.querySelector("input").value.replaceAll(" ", "").length === 0) return null;
+    addToDoElement();
+    deleteBtnProp();
+    strikeToDoElement();
 };
