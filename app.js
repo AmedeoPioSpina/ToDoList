@@ -51,6 +51,7 @@ const strikeToDoElement = () => {
         element.addEventListener("click", (e) => {
             let text = element.innerText;
             element.innerHTML = text.strike();
+            setLocalSave();
         });
     });
 }
@@ -62,6 +63,7 @@ let deleteBtns = document.querySelectorAll(".deleteBtn");
 
 loadLocalSave();
 deleteBtnProp();
+strikeToDoElement();
 
 
 addBtn.onclick = (e) => {
